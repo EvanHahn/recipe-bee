@@ -12,6 +12,7 @@ function saveItems () {
 }
 
 var $addItemInput = $('#add-item-input')
+var $addItemError = $('#add-item-error')
 var $itemList = $('#item-list')
 
 function render () {
@@ -32,14 +33,15 @@ $('#add-item').addEventListener('submit', function (event) {
   try {
     item = parseItem($addItemInput.value)
   } catch (err) {
-    // TODO: show this on screen
-    console.error(err)
+    $addItemError.innerText = err.message
+    $addItemError.removeAttribute('hidden')
     return
   }
 
   items = addItemToList(items, item)
 
   render()
+  $addItemError.setAttribute('hidden', true)
   $addItemInput.value = ''
 
   saveItems()

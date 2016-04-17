@@ -2,10 +2,18 @@ html {
   font-family: "Open Sans", "Segoe UI", Avenir, Ubuntu, Tahoma, Verdana, Helvetica, sans-serif;
 }
 
+#add-item {
+  margin-bottom: 1em;
+}
+
 .app__add-item {
   width: 100%;
   padding: 1em;
-  margin-bottom: 1em;
+}
+
+.app__add-item-error {
+  padding: 1em;
+  background-color: #fdd;
 }
 
 .app__item-list {
