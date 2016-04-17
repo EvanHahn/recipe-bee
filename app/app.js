@@ -50,14 +50,20 @@ $('#add-item').addEventListener('submit', function (event) {
 var clickActions = {
   edit: function (event) {
     var $li = event.target.parentNode.parentNode
+    var text = $li.querySelector('.app__item-list__item__text').innerText
 
     items.splice(nodeIndex($li), 1)
     render()
 
-    $addItemInput.value = $li.querySelector('.app__item-list__item__text').innerText
+    $addItemInput.value = text
     $addItemInput.focus()
   },
   delete: function (event) {
+    var $li = event.target.parentNode
+    var text = $li.querySelector('.app__item-list__item__text').innerText
+
+    if (!confirm('Remove ' + text + '?')) { return }
+
     items.splice(nodeIndex(event.target.parentNode), 1)
     render()
     saveItems()
