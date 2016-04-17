@@ -1,3 +1,5 @@
+/* globals localStorage */
+
 var parseItem = require('./lib/parse-item')
 var addItemToList = require('./lib/add-item-to-list')
 var renderItem = require('./render-item')
@@ -23,7 +25,7 @@ module.exports = function () {
     $itemList.innerHTML = ''
     $itemList.appendChild($newContent)
 
-    $export.value = items.map(formatItem).join('\n')
+    $export.value = global.items.map(formatItem).join('\n')
   }
 
   $('#add-item').addEventListener('submit', function (event) {
@@ -52,7 +54,7 @@ module.exports = function () {
       var $li = event.target.parentNode.parentNode
       var text = $li.querySelector('.app__item-list__item__text').innerText
 
-      items.splice(nodeIndex($li), 1)
+      global.items.splice(nodeIndex($li), 1)
       render()
 
       $addItemInput.value = text
@@ -62,11 +64,11 @@ module.exports = function () {
       var $li = event.target.parentNode
       var text = $li.querySelector('.app__item-list__item__text').innerText
 
-      if (!confirm('Remove ' + text + '?')) { return }
+      if (!global.confirm('Remove ' + text + '?')) { return }
 
-      items.splice(nodeIndex(event.target.parentNode), 1)
+      global.items.splice(nodeIndex(event.target.parentNode), 1)
       render()
-      saveItems(items)
+      saveItems()
     }
   }
 
