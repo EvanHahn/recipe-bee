@@ -9,6 +9,17 @@ a {
   text-decoration: none;
 }
 
+input {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  outline: 0;
+}
+
+input:focus {
+  border: 1px solid #99f;
+  box-shadow: 0 0 5px #99f;
+}
+
 .container {
   width: 95%;
   max-width: 600px;
