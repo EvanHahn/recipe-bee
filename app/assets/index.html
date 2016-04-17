@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <title>Recipe Bee</title>
 <link rel="stylesheet" href="app.css">
-
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
@@ -25,6 +25,7 @@
 <meta name="msapplication-TileColor" content="#2d89ef">
 <meta name="msapplication-TileImage" content="mstile-144x144.png">
 <meta name="theme-color" content="#9999ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 </head>
 <body>
@@ -55,7 +56,7 @@
 
 <div class="app container">
   <form id="add-item">
-    <input id="add-item-input" class="app__add-item" placeholder='"1 egg" or "guacamole" or "4 cups milk"' type="text" autofocus>
+    <input id="add-item-input" class="app__add-item" placeholder='"4 cups milk" or "2 eggs" or ' type="text" autofocus>
     <div id="add-item-error" class="app__add-item-error" hidden>Error!</div>
     <input type="submit" hidden>
   </form>
