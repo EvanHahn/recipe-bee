@@ -8,8 +8,37 @@ html {
   margin-bottom: 1em;
 }
 
-.app_item-list {
+.app__item-list {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+.app__item-list__item {
+  padding: 1em;
+  position: relative;
+}
+
+.app__item-list__item:hover {
+  background-color: #f9f9f9;
+}
+
+.app__item-list__item__text {
+  margin-right: 1em;
+}
+
+.app__item-list__item__edit, .app__item-list__item__delete {
+  display: none;
+  font-weight: bold;
+  color: red;
+}
+
+.app__item-list__item__edit img {
+  height: 11px;
+  margin-right: 0.5em;
+}
+
+.app__item-list__item:hover .app__item-list__item__edit,
+.app__item-list__item:hover .app__item-list__item__delete {
+  display: inline;
 }
