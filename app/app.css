@@ -1,4 +1,15 @@
+html {
+  font-family: "Open Sans", "Segoe UI", Avenir, Ubuntu, Tahoma, Verdana, Helvetica, sans-serif;
+}
+
 .app__add-item {
   width: 100%;
   padding: 1em;
+  margin-bottom: 1em;
+}
+
+.app_item-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
