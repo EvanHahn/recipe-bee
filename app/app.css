@@ -2,6 +2,22 @@ html {
   font-family: "Open Sans", "Segoe UI", Avenir, Ubuntu, Tahoma, Verdana, Helvetica, sans-serif;
 }
 
+.navbar__logo {
+  font-weight: 100;
+  text-transform: lowercase;
+  font-size: 24pt;
+}
+
+.navbar__logo img {
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+}
+
+.app {
+  margin-bottom: 2em;
+}
+
 #add-item {
   margin-bottom: 1em;
 }

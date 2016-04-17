@@ -27,15 +27,12 @@ input:focus {
   margin-right: auto;
 }
 
-.navbar {
-  padding: 1em 0;
-  text-align: center;
+.pull-right {
+  float: right;
 }
 
-.navbar__logo {
-  width: 48px;
-  height: 48px;
-  vertical-align: middle;
+.navbar {
+  padding: 1em 0;
 }
 
 footer {
