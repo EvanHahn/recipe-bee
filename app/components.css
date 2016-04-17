@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 95%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar {
+  padding: 1em 0;
+  text-align: center;
+}
+
+.navbar__logo {
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+}
+
+footer {
+  font-size: 80%;
+}
