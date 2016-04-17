@@ -3,6 +3,8 @@ Recipe Bee
 
 This is a little app that helps you build grocery list by combining items for you.
 
+![screencast](https://cloud.githubusercontent.com/assets/777712/14590715/4c671666-04b6-11e6-837d-9afe89772533.gif)
+
 Hacking on this
 ---------------
 
