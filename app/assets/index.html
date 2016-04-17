@@ -15,15 +15,21 @@
   </div>
 </nav>
 
-<form id="app" class="app container">
-  <input class="app__add-item" placeholder='"1 egg" or "guacamole" or "4 cups milk"' autofocus>
-</form>
+<div class="app container">
+  <form id="add-item">
+    <input id="add-item-input" class="app__add-item" placeholder='"1 egg" or "guacamole" or "4 cups milk"' autofocus>
+    <input type="submit" hidden>
+  </form>
+
+  <ul id="item-list"></ul>
+</div>
 
 <footer class="container">
   <p>App by <a href="http://evanhahn.com">Evan Hahn</a>. Logo by <a href="http://emojione.com/">Emoji One</a>.</p>
 </footer>
 
 <script src="app.js"></script>
+<script>require('app')</script>
 
 </body>
 </html>
