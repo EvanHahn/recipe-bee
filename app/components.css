@@ -39,5 +39,6 @@ input:focus {
 }
 
 footer {
+  text-align: center;
   font-size: 80%;
 }
