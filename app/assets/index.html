@@ -14,8 +14,24 @@
     <div class="navbar__logo">
       Recipe <img src="bee.svg"> Bee
     </div>
+
+    <ul class="navbar__links">
+      <li class="navbar__links__link"><a href="#about">About</a></li>
+      <li class="navbar__links__link"><a href="#export">Export</a></li>
+    </ul>
   </div>
 </nav>
+
+<div id="extras" class="extras container" hidden>
+  <div class="extras__extra" data-link="#about">
+    <p>Recipe Bee is a little app made by <a href="http://evanhahn.com">Evan Hahn</a> because he wanted something that made it easier to make grocery lists.</p>
+    <p>Logo by <a href="http://emojione.com/">Emoji One</a>.</p>
+  </div>
+
+  <div class="extras__extra" data-link="#export">
+    <textarea id="export" class="extras__extra__export" readonly></textarea>
+  </div>
+</div>
 
 <div class="app container">
   <form id="add-item">
@@ -28,11 +44,11 @@
 </div>
 
 <footer class="container">
-  <p>App by <a href="http://evanhahn.com">Evan Hahn</a>. Logo by <a href="http://emojione.com/">Emoji One</a>.</p>
+  <p></p>
 </footer>
 
-<script src="app.js"></script>
-<script>require('app')</script>
+<script src="main.js"></script>
+<script>require('main')</script>
 
 </body>
 </html>

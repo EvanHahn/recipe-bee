@@ -1,81 +1,91 @@
 var parseItem = require('./lib/parse-item')
 var addItemToList = require('./lib/add-item-to-list')
 var renderItem = require('./render-item')
+var formatItem = require('./lib/format-item')
 var nodeIndex = require('./lib/node-index')
 var $ = require('./lib/query-selector')
 
-var localStorageItems = localStorage.getItem('items')
-var items = localStorageItems ? JSON.parse(localStorageItems) : []
+var global = window
 
-function saveItems () {
-  localStorage.setItem('items', JSON.stringify(items))
-}
+module.exports = function () {
+  global.items = loadItems()
 
-var $addItemInput = $('#add-item-input')
-var $addItemError = $('#add-item-error')
-var $itemList = $('#item-list')
+  var $addItemInput = $('#add-item-input')
+  var $addItemError = $('#add-item-error')
+  var $itemList = $('#item-list')
+  var $export = $('#export')
 
-function render () {
-  var $newContent = document.createDocumentFragment()
+  function render () {
+    var $newContent = document.createDocumentFragment()
+    global.items.forEach(function (item) {
+      $newContent.appendChild(renderItem(item))
+    })
+    $itemList.innerHTML = ''
+    $itemList.appendChild($newContent)
 
-  items.forEach(function (item) {
-    $newContent.appendChild(renderItem(item))
+    $export.value = items.map(formatItem).join('\n')
+  }
+
+  $('#add-item').addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    var item
+    try {
+      item = parseItem($addItemInput.value)
+    } catch (err) {
+      $addItemError.innerText = err.message
+      $addItemError.removeAttribute('hidden')
+      return
+    }
+
+    global.items = addItemToList(global.items, item)
+
+    render()
+    $addItemError.setAttribute('hidden', true)
+    $addItemInput.value = ''
+
+    saveItems()
   })
 
-  $itemList.innerHTML = ''
-  $itemList.appendChild($newContent)
-}
+  var clickActions = {
+    edit: function (event) {
+      var $li = event.target.parentNode.parentNode
+      var text = $li.querySelector('.app__item-list__item__text').innerText
 
-$('#add-item').addEventListener('submit', function (event) {
-  event.preventDefault()
+      items.splice(nodeIndex($li), 1)
+      render()
 
-  var item
-  try {
-    item = parseItem($addItemInput.value)
-  } catch (err) {
-    $addItemError.innerText = err.message
-    $addItemError.removeAttribute('hidden')
-    return
+      $addItemInput.value = text
+      $addItemInput.focus()
+    },
+    delete: function (event) {
+      var $li = event.target.parentNode
+      var text = $li.querySelector('.app__item-list__item__text').innerText
+
+      if (!confirm('Remove ' + text + '?')) { return }
+
+      items.splice(nodeIndex(event.target.parentNode), 1)
+      render()
+      saveItems(items)
+    }
   }
 
-  items = addItemToList(items, item)
+  $('#item-list').addEventListener('click', function (event) {
+    var action = event.target.dataset.action
+    if (clickActions.hasOwnProperty(action)) {
+      event.preventDefault()
+      clickActions[action](event)
+    }
+  })
 
   render()
-  $addItemError.setAttribute('hidden', true)
-  $addItemInput.value = ''
-
-  saveItems()
-})
-
-var clickActions = {
-  edit: function (event) {
-    var $li = event.target.parentNode.parentNode
-    var text = $li.querySelector('.app__item-list__item__text').innerText
-
-    items.splice(nodeIndex($li), 1)
-    render()
-
-    $addItemInput.value = text
-    $addItemInput.focus()
-  },
-  delete: function (event) {
-    var $li = event.target.parentNode
-    var text = $li.querySelector('.app__item-list__item__text').innerText
-
-    if (!confirm('Remove ' + text + '?')) { return }
-
-    items.splice(nodeIndex(event.target.parentNode), 1)
-    render()
-    saveItems()
-  }
 }
 
-$('#item-list').addEventListener('click', function (event) {
-  var action = event.target.dataset.action
-  if (clickActions.hasOwnProperty(action)) {
-    event.preventDefault()
-    clickActions[action](event)
-  }
-})
+function loadItems () {
+  var localStorageItems = localStorage.getItem('items')
+  return localStorageItems ? JSON.parse(localStorageItems) : []
+}
 
-render()
+function saveItems () {
+  localStorage.setItem('items', JSON.stringify(global.items))
+}

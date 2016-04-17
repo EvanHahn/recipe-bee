@@ -1,7 +1,7 @@
 module.exports = {
   files: {
     javascripts: {
-      joinTo: 'app.js'
+      joinTo: 'main.js'
     },
     stylesheets: {
       joinTo: 'app.css'

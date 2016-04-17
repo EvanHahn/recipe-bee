@@ -32,10 +32,5 @@ input:focus {
 }
 
 .navbar {
-  padding: 1em 0;
-}
-
-footer {
-  text-align: center;
-  font-size: 80%;
+  padding-top: 1em;
 }
