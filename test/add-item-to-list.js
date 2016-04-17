@@ -1,6 +1,6 @@
 'use strict'
 
-const addItem = require('../app/add-item-to-list')
+const addItem = require('../app/lib/add-item-to-list')
 const assert = require('assert')
 
 describe('addItemToList', function () {
